@@ -1,0 +1,1684 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-gulp-rev-all/gulp-rev-all/revisioner.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-gulp-rev-all">npmtest-gulp-rev-all (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-gulp-rev-all/gulp-rev-all/revisioner.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">11.4% <small>(22 / 193)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 81)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">5.56% <small>(1 / 18)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">11.46% <small>(22 / 192)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> » <a href="index.html">node-npmtest-gulp-rev-all/gulp-rev-all/</a> » revisioner.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var Gutil = require('gulp-util');
+var Merge = require('merge');
+var Path = require('path');
+var Tool = require('./tool');
+&nbsp;
+var Revisioner = (function () {
+  'use strict';
+  var Revisioner = <span class="fstat-no" title="function not covered">function(options) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var defaults = {</span>
+      'hashLength': 8,
+      'dontGlobal': [ /^\/favicon.ico$/g ],
+      'dontRenameFile': [],
+      'dontUpdateReference': [],
+      'dontSearchFile': [],
+      'fileNameVersion': 'rev-version.json',
+      'fileNameManifest': 'rev-manifest.json',
+      'prefix': '',
+      'referenceToRegexs': referenceToRegexs,
+      'annotator': annotator,
+      'replacer': replacer,
+      'debug': false,
+      'includeFilesInManifest': ['.css', '.js']
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered">    this.options = Merge(defaults, options);</span>
+&nbsp;
+    // File pool, any file passed into the Revisioner is stored in this object
+<span class="cstat-no" title="statement not covered">    this.files = {};</span>
+<span class="cstat-no" title="statement not covered">    this.filesTemp = [];</span>
+&nbsp;
+    // Stores the combined hash of all processed files, used to create the version file
+<span class="cstat-no" title="statement not covered">    this.hashCombined = '';</span>
+&nbsp;
+    // Stores the before : after path of assets, used to create the manifset file
+<span class="cstat-no" title="statement not covered">    this.manifest = {};</span>
+&nbsp;
+    // Enable / Disable logger based on supplied options
+<span class="cstat-no" title="statement not covered">    this.log = (this.options.debug) ? Gutil.log : <span class="fstat-no" title="function not covered">function () {</span>};</span>
+&nbsp;
+    // Make tools available client side callbacks supplied in options
+<span class="cstat-no" title="statement not covered">    this.Tool = Tool;</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var nonFileNameChar = '[^a-zA-Z0-9\\.\\-\\_\\/]';</span>
+<span class="cstat-no" title="statement not covered">    var qoutes = '\'|"';</span>
+&nbsp;
+<span class="fstat-no" title="function not covered">    function referenceToRegexs(reference) {</span>
+<span class="cstat-no" title="statement not covered">      var escapedRefPathBase = Tool.path_without_ext(reference.path).replace(/([^0-9a-z])/ig, '\\$1');</span>
+<span class="cstat-no" title="statement not covered">      var escapedRefPathExt = Path.extname(reference.path).replace(/([^0-9a-z])/ig, '\\$1');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      var regExp, regExps = [];</span>
+<span class="cstat-no" title="statement not covered">      var isJSReference = reference.path.match(/\.js$/);</span>
+&nbsp;
+      // Extensionless javascript file references has to to be qouted
+<span class="cstat-no" title="statement not covered">      if (isJSReference) {</span>
+<span class="cstat-no" title="statement not covered">        regExp = '('+ qoutes +')(' + escapedRefPathBase + ')()('+ qoutes + '|$)';</span>
+<span class="cstat-no" title="statement not covered">        regExps.push(new RegExp(regExp, 'g'));</span>
+      }
+&nbsp;
+      // Expect left and right sides of the reference to be a non-filename type character, escape special regex chars
+<span class="cstat-no" title="statement not covered">      regExp = '('+ nonFileNameChar +')(' + escapedRefPathBase + ')(' +  escapedRefPathExt + ')('+ nonFileNameChar + '|$)';</span>
+<span class="cstat-no" title="statement not covered">      regExps.push(new RegExp(regExp, 'g'));</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      return regExps;</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function annotator(contents, path) {</span>
+<span class="cstat-no" title="statement not covered">      return [{'contents': contents}];</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered">    function replacer(fragment, replaceRegExp, newReference, referencedFile) {</span>
+<span class="cstat-no" title="statement not covered">       fragment.contents = fragment.contents.replace(replaceRegExp, '$1' + newReference + '$3$4');</span>
+    }
+&nbsp;
+  };
+&nbsp;
+  Revisioner.prototype.versionFile = <span class="fstat-no" title="function not covered">function () {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var out = {</span>
+      hash: this.hashCombined,
+      timestamp: new Date()
+    };
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var file = new Gutil.File({</span>
+      cwd: this.pathCwd,
+      base: this.pathBase,
+      path: Path.join(this.pathBase, this.options.fileNameVersion),
+      contents: new Buffer(JSON.stringify(out, null, 2)),
+      revisioner: this
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered">    file.revisioner = this;</span>
+<span class="cstat-no" title="statement not covered">    return file;</span>
+&nbsp;
+  };
+&nbsp;
+  Revisioner.prototype.manifestFile = <span class="fstat-no" title="function not covered">function () {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var file = new Gutil.File({</span>
+      cwd: this.pathCwd,
+      base: this.pathBase,
+      path: Path.join(this.pathBase, this.options.fileNameManifest),
+      contents: new Buffer(JSON.stringify(this.manifest, null, 2)),
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered">    file.revisioner = this;</span>
+<span class="cstat-no" title="statement not covered">    return file;</span>
+&nbsp;
+  };
+&nbsp;
+  /**
+   * Used to feed files into the Revisioner, sets up the original filename and hash.
+   */
+  Revisioner.prototype.processFile = <span class="fstat-no" title="function not covered">function (file) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    if (!this.pathCwd) {</span>
+<span class="cstat-no" title="statement not covered">      this.pathCwd = file.cwd;</span>
+    }
+&nbsp;
+    // Chnage relative paths to absolute
+<span class="cstat-no" title="statement not covered">    if (!file.base.match(/^(\/|[a-z]:)/i)) {</span>
+<span class="cstat-no" title="statement not covered">      file.base = Tool.join_path(file.cwd, file.base);</span>
+    }
+&nbsp;
+    // Normalize the base common to all the files
+<span class="cstat-no" title="statement not covered">    if (!this.pathBase) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      this.pathBase = file.base;</span>
+&nbsp;
+    } else <span class="cstat-no" title="statement not covered">if (file.base.indexOf(this.pathBase) === -1) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      var levelsBase = this.pathBase.split(/[\/|\\]/);</span>
+<span class="cstat-no" title="statement not covered">      var levelsFile = file.base.split(/[\/|\\]/);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      var common = [];</span>
+<span class="cstat-no" title="statement not covered">      for (var level = 0, length = levelsFile.length; level &lt; length; level++) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">        if (level &lt; levelsBase.length &amp;&amp; level &lt; levelsFile.length &amp;&amp;</span>
+            levelsBase[level] === levelsFile[level]) {
+<span class="cstat-no" title="statement not covered">          common.push(levelsFile[level]);</span>
+<span class="cstat-no" title="statement not covered">          continue;</span>
+        }
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered">      if (common[common.length - 1] !== '') {</span>
+<span class="cstat-no" title="statement not covered">        common.push('');</span>
+      }
+<span class="cstat-no" title="statement not covered">      this.pathBase = common.join('/');</span>
+&nbsp;
+    }
+&nbsp;
+    // Set original values before any processing occurs
+<span class="cstat-no" title="statement not covered">    file.revPathOriginal = file.revOrigPath = file.path;</span>
+<span class="cstat-no" title="statement not covered">    file.revFilenameExtOriginal = Path.extname(file.path);</span>
+<span class="cstat-no" title="statement not covered">    file.revFilenameOriginal = Path.basename(file.path, file.revFilenameExtOriginal);</span>
+<span class="cstat-no" title="statement not covered">    file.revHashOriginal = this.Tool.md5(String(file.contents));</span>
+<span class="cstat-no" title="statement not covered">    file.revContentsOriginal = file.contents;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    this.filesTemp.push(file);</span>
+&nbsp;
+  };
+&nbsp;
+  /**
+   * Resolves references, renames files, updates references.  To be called after all the files
+   * have been fed into the Revisioner (ie. At the end of the file stream)
+   */
+  Revisioner.prototype.run = <span class="fstat-no" title="function not covered">function () {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    this.hashCombined = '';</span>
+&nbsp;
+    // Go through and correct the base path now that we have proccessed all the files coming in
+<span class="cstat-no" title="statement not covered">    for (var i = 0, length = this.filesTemp.length; i &lt; length; i++) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      this.filesTemp[i].base = this.pathBase;</span>
+<span class="cstat-no" title="statement not covered">      var path = this.Tool.get_relative_path(this.pathBase, this.filesTemp[i].path);</span>
+<span class="cstat-no" title="statement not covered">      this.files[path] = this.filesTemp[i];</span>
+&nbsp;
+    }
+&nbsp;
+    // Resolve references to other files
+<span class="cstat-no" title="statement not covered">    for (var path in this.files) {</span>
+<span class="cstat-no" title="statement not covered">      this.resolveReferences(this.files[path]);</span>
+    }
+&nbsp;
+    // Resolve and set revisioned filename based on hash + reference hashes and ignore rules
+<span class="cstat-no" title="statement not covered">    for (var path in this.files) {</span>
+<span class="cstat-no" title="statement not covered">      this.revisionFilename(this.files[path]);</span>
+    }
+&nbsp;
+    // Consolidate the concatinated hash of all the files, into a single hash for the version file
+<span class="cstat-no" title="statement not covered">    this.hashCombined = this.Tool.md5(this.hashCombined);</span>
+&nbsp;
+    // Update references to revisioned filenames
+<span class="cstat-no" title="statement not covered">    for (var path in this.files) {</span>
+<span class="cstat-no" title="statement not covered">      this.updateReferences(this.files[path]);</span>
+    }
+&nbsp;
+  };
+&nbsp;
+  /**
+   * Go through each file in the file pool, search for references to any other file in the pool.
+   */
+  Revisioner.prototype.resolveReferences = <span class="fstat-no" title="function not covered">function (fileResolveReferencesIn) {</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var contents = String(fileResolveReferencesIn.revContentsOriginal);</span>
+<span class="cstat-no" title="statement not covered">    fileResolveReferencesIn.revReferencePaths = {};</span>
+<span class="cstat-no" title="statement not covered">    fileResolveReferencesIn.revReferenceFiles = {};</span>
+<span class="cstat-no" title="statement not covered">    var referenceGroupRelative = [];</span>
+<span class="cstat-no" title="statement not covered">    var referenceGroupAbsolute = [];</span>
+<span class="cstat-no" title="statement not covered">    fileResolveReferencesIn.referenceGroupsContainer = {</span>
+      'relative': referenceGroupRelative,
+      'absolute': referenceGroupAbsolute
+    };
+&nbsp;
+    // Don't try and resolve references in binary files or files that have been blacklisted
+<span class="cstat-no" title="statement not covered">    if (this.Tool.is_binary_file(fileResolveReferencesIn) || !this.shouldSearchFile(fileResolveReferencesIn)) {</span>
+<span class="cstat-no" title="statement not covered">      return;</span>
+    }
+&nbsp;
+    // For the current file (fileResolveReferencesIn), look for references to any other file in the project
+<span class="cstat-no" title="statement not covered">    for (var path in this.files) {</span>
+&nbsp;
+      // Organize them by relative vs absolute reference types
+<span class="cstat-no" title="statement not covered">      var fileCurrentReference = this.files[path];</span>
+<span class="cstat-no" title="statement not covered">      var references;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      references = this.Tool.get_reference_representations_relative(fileCurrentReference, fileResolveReferencesIn);</span>
+<span class="cstat-no" title="statement not covered">      for (var i = 0, length = references.length; i &lt; length; i++) {</span>
+<span class="cstat-no" title="statement not covered">        referenceGroupRelative.push({</span>
+          'file': this.files[path],
+          'path': references[i]
+        });
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered">      references = this.Tool.get_reference_representations_absolute(fileCurrentReference, fileResolveReferencesIn);</span>
+<span class="cstat-no" title="statement not covered">      for (var i = 0, length = references.length; i &lt; length; i++) {</span>
+<span class="cstat-no" title="statement not covered">        referenceGroupAbsolute.push({</span>
+          'file': this.files[path],
+          'path': references[i]
+        });
+      }
+&nbsp;
+    }
+&nbsp;
+    // Priority relative references higher than absolute
+<span class="cstat-no" title="statement not covered">    for (var referenceType in fileResolveReferencesIn.referenceGroupsContainer) {</span>
+<span class="cstat-no" title="statement not covered">      var referenceGroup = fileResolveReferencesIn.referenceGroupsContainer[referenceType];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      for (var referenceIndex = 0, referenceGroupLength = referenceGroup.length; referenceIndex &lt; referenceGroupLength; referenceIndex++) {</span>
+<span class="cstat-no" title="statement not covered">        var reference = referenceGroup[referenceIndex];</span>
+<span class="cstat-no" title="statement not covered">        var regExps = this.options.referenceToRegexs(reference);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">        for (var j = 0; j &lt; regExps.length; j++) {</span>
+<span class="cstat-no" title="statement not covered">          if (contents.match(regExps[j])) {</span>
+            // Only register this reference if we don't have one already by the same path
+<span class="cstat-no" title="statement not covered">            if (!fileResolveReferencesIn.revReferencePaths[reference.path]) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">              fileResolveReferencesIn.revReferenceFiles[reference.file.path] = reference.file;</span>
+<span class="cstat-no" title="statement not covered">              fileResolveReferencesIn.revReferencePaths[reference.path] = {</span>
+                'regExps': [regExps[j]],
+                'file': reference.file,
+                'path': reference.path
+              };
+<span class="cstat-no" title="statement not covered">              this.log('gulp-rev-all:', 'Found', referenceType, 'reference [', Gutil.colors.magenta(reference.path), '] -&gt; [', Gutil.colors.green(reference.file.path), '] in [', Gutil.colors.blue(fileResolveReferencesIn.revPathOriginal), ']');</span>
+            } else <span class="cstat-no" title="statement not covered">if (fileResolveReferencesIn.revReferencePaths[reference.path].file.revPathOriginal === reference.file.revPathOriginal) {</span>
+              // Append the other regexes to account for inconsitent use
+<span class="cstat-no" title="statement not covered">              fileResolveReferencesIn.revReferencePaths[reference.path].regExps.push(regExps[j]);</span>
+            } else {
+<span class="cstat-no" title="statement not covered">              this.log('gulp-rev-all:', 'Possible ambiguous reference detected [', Gutil.colors.red(fileResolveReferencesIn.revReferencePaths[reference.path].path), ' (', fileResolveReferencesIn.revReferencePaths[reference.path].file.revPathOriginal, ')] &lt;-&gt; [', Gutil.colors.red(reference.path), '(', Gutil.colors.red(reference.file.revPathOriginal), ')]');</span>
+            }
+          }
+        }
+      }
+    }
+&nbsp;
+&nbsp;
+  };
+&nbsp;
+  /**
+   * Calculate hash based contents and references.
+   * hash = hash(file hash + hash(hash references 1 + hash reference N)..)
+   */
+  Revisioner.prototype.calculateHash = <span class="fstat-no" title="function not covered">function (file, stack) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    stack = stack || [];</span>
+<span class="cstat-no" title="statement not covered">    var hash = file.revHashOriginal;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    stack.push(file);</span>
+&nbsp;
+    // Resolve hash for child references
+<span class="cstat-no" title="statement not covered">    if (Object.keys(file.revReferenceFiles).length &gt; 0) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      for (var key in file.revReferenceFiles) {</span>
+&nbsp;
+        // Prevent infinite loops caused by circular references, don't recurse if we've already encountered this file
+<span class="cstat-no" title="statement not covered">        if (stack.indexOf(file.revReferenceFiles[key]) === -1) {</span>
+<span class="cstat-no" title="statement not covered">          hash += this.calculateHash(file.revReferenceFiles[key], stack);</span>
+        }
+&nbsp;
+      }
+&nbsp;
+      // This file's hash should change if any of its references will be prefixed.
+<span class="cstat-no" title="statement not covered">      if (this.options.prefix &amp;&amp;</span>
+          Object.keys(file.referenceGroupsContainer.absolute).length) {
+<span class="cstat-no" title="statement not covered">        hash += this.options.prefix;</span>
+      }
+&nbsp;
+      // Consolidate many hashes into one
+<span class="cstat-no" title="statement not covered">      hash = this.Tool.md5(hash);</span>
+&nbsp;
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    return hash;</span>
+&nbsp;
+  };
+&nbsp;
+&nbsp;
+  /**
+   * Revision filename based on internal contents + references.
+   */
+  Revisioner.prototype.revisionFilename = <span class="fstat-no" title="function not covered">function (file) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var filename = file.revFilenameOriginal;</span>
+<span class="cstat-no" title="statement not covered">    var ext = file.revFilenameExtOriginal;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    file.revHash = this.calculateHash(file);</span>
+&nbsp;
+    // Allow the client to transform the final filename
+<span class="cstat-no" title="statement not covered">    if (this.options.transformFilename) {</span>
+<span class="cstat-no" title="statement not covered">      filename = this.options.transformFilename.call(this, file, file.revHash);</span>
+    } else {
+<span class="cstat-no" title="statement not covered">      filename = filename + '.' + file.revHash.substr(0, this.options.hashLength) + ext;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    file.revFilename = filename;</span>
+    // file.revFilenameNoExt = Tool.path_without_ext(file.revFilename);
+&nbsp;
+<span class="cstat-no" title="statement not covered">    if (this.shouldFileBeRenamed(file)) {</span>
+<span class="cstat-no" title="statement not covered">      file.path = this.Tool.join_path(Path.dirname(file.path), filename);</span>
+    }
+&nbsp;
+    // Maintain the combined hash used in version file
+<span class="cstat-no" title="statement not covered">    this.hashCombined += file.revHash;</span>
+&nbsp;
+    // Maintain the manifset file
+<span class="cstat-no" title="statement not covered">    var pathOriginal = this.Tool.get_relative_path(this.pathBase, file.revPathOriginal, true);</span>
+<span class="cstat-no" title="statement not covered">    var pathRevisioned = this.Tool.get_relative_path(file.base, file.path, true);</span>
+    // Add only specific file types to the manifest file
+<span class="cstat-no" title="statement not covered">    if (this.options.includeFilesInManifest.indexOf(ext) !== -1) {</span>
+<span class="cstat-no" title="statement not covered">        this.manifest[pathOriginal] = pathRevisioned;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    file.revPath = pathRevisioned;</span>
+&nbsp;
+  };
+&nbsp;
+  /**
+   * Update the contents of a file with the revisioned filenames of its references.
+   */
+  Revisioner.prototype.updateReferences = <span class="fstat-no" title="function not covered">function (file) {</span>
+&nbsp;
+    // Don't try and update references in binary files or blacklisted files
+<span class="cstat-no" title="statement not covered">    if (this.Tool.is_binary_file(file) || !this.shouldSearchFile(file)) {</span>
+<span class="cstat-no" title="statement not covered">      return;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var contents = String(file.revContentsOriginal);</span>
+<span class="cstat-no" title="statement not covered">    var annotatedContent = this.options.annotator(contents, file.revPathOriginal);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    for (var pathReference in file.revReferencePaths) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      var reference = file.revReferencePaths[pathReference];</span>
+&nbsp;
+      // Replace regular filename with revisioned version
+<span class="cstat-no" title="statement not covered">      var referencePath = reference.path.substr(0, reference.path.length - (reference.file.revFilenameOriginal.length + reference.file.revFilenameExtOriginal.length));</span>
+<span class="cstat-no" title="statement not covered">      var pathReferenceReplace = referencePath + reference.file.revFilename;</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">      if (this.options.transformPath) {</span>
+        // Transform path using client supplied transformPath callback,
+<span class="cstat-no" title="statement not covered">        pathReferenceReplace = this.options.transformPath.call(this, pathReferenceReplace, reference.path, reference.file, file);</span>
+      } else <span class="cstat-no" title="statement not covered">if (this.options.prefix &amp;&amp; pathReferenceReplace[0] === '/') {</span>
+        // Append with user supplied prefix
+<span class="cstat-no" title="statement not covered">        pathReferenceReplace = this.Tool.join_path_url(this.options.prefix, pathReferenceReplace);</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered">      if (this.shouldUpdateReference(reference.file)) {</span>
+        // The extention should remain constant so we dont add extentions to references without extentions
+<span class="cstat-no" title="statement not covered">        var noExtReplace = Tool.path_without_ext(pathReferenceReplace);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">        for(var i = 0; i &lt; annotatedContent.length; i++){</span>
+<span class="cstat-no" title="statement not covered">          for(var j = 0; j &lt; reference.regExps.length; j++){</span>
+<span class="cstat-no" title="statement not covered">            this.options.replacer(annotatedContent[i], reference.regExps[j], noExtReplace, reference.file);</span>
+          }
+        }
+      }
+&nbsp;
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    contents = annotatedContent.map(<span class="fstat-no" title="function not covered">function(annotation) {</span> <span class="cstat-no" title="statement not covered">return annotation.contents; </span>}).join('');</span>
+<span class="cstat-no" title="statement not covered">    file.contents = new Buffer(contents);</span>
+&nbsp;
+  };
+&nbsp;
+  /**
+   * Determines if a file should be renamed based on dontRenameFile supplied in options.
+   */
+  Revisioner.prototype.shouldFileBeRenamed = <span class="fstat-no" title="function not covered">function (file) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontGlobal.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered">        return false;</span>
+      }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontRenameFile.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontRenameFile[i] instanceof RegExp) ? this.options.dontRenameFile[i] : new RegExp(this.options.dontRenameFile[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered">        return false;</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered">    return true;</span>
+&nbsp;
+  };
+&nbsp;
+&nbsp;
+  /**
+   * Determines if a particular reference should be updated across assets based on dontUpdateReference supplied in options.
+   */
+  Revisioner.prototype.shouldUpdateReference = <span class="fstat-no" title="function not covered">function (file) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontGlobal.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered">        return false;</span>
+      }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontUpdateReference.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontUpdateReference[i] instanceof RegExp) ? this.options.dontUpdateReference[i] : new RegExp(this.options.dontUpdateReference[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered">        return false;</span>
+      }
+    }
+    
+<span class="cstat-no" title="statement not covered">    return true;</span>
+&nbsp;
+  };
+&nbsp;
+  /**
+   * Determines if a particular reference should be updated across assets based on dontUpdateReference supplied in options.
+   */
+  Revisioner.prototype.shouldSearchFile = <span class="fstat-no" title="function not covered">function (file) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontGlobal.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered">        return false;</span>
+      }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontSearchFile.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontSearchFile[i] instanceof RegExp) ? this.options.dontSearchFile[i] : new RegExp(this.options.dontSearchFile[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered">        return false;</span>
+      }
+    }
+<span class="cstat-no" title="statement not covered">    return true;</span>
+&nbsp;
+  };
+&nbsp;
+  return Revisioner;
+&nbsp;
+&nbsp;
+})();
+&nbsp;
+module.exports = Revisioner;
+&nbsp;
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 20:06:52 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
