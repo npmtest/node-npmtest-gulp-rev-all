@@ -1,5 +1,7 @@
-<html lang="en"><head>
-    <title>Code coverage report for node-npmtest-gulp-rev-all/gulp-rev-all/revisioner.js</title>
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-gulp-rev-all/node_modules/gulp-rev-all/revisioner.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -192,7 +194,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-gulp-rev-all">npmtest-gulp-rev-all (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-gulp-rev-all/gulp-rev-all/revisioner.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-gulp-rev-all/node_modules/gulp-rev-all/revisioner.js</span></h1>
     <h2>
         
         Statements: <span class="metric">11.4% <small>(22 / 193)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -208,11 +210,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> » <a href="index.html">node-npmtest-gulp-rev-all/gulp-rev-all/</a> » revisioner.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-gulp-rev-all/node_modules/gulp-rev-all/</a> &#187; revisioner.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tbody><tr><td class="line-count">1
+<tr><td class="line-count">1
 2
 3
 4
@@ -1193,9 +1195,9 @@ var Tool = require('./tool');
 &nbsp;
 var Revisioner = (function () {
   'use strict';
-  var Revisioner = <span class="fstat-no" title="function not covered">function(options) {</span>
+  var Revisioner = <span class="fstat-no" title="function not covered" >function(options) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var defaults = {</span>
+<span class="cstat-no" title="statement not covered" >    var defaults = {</span>
       'hashLength': 8,
       'dontGlobal': [ /^\/favicon.ico$/g ],
       'dontRenameFile': [],
@@ -1211,66 +1213,66 @@ var Revisioner = (function () {
       'includeFilesInManifest': ['.css', '.js']
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered">    this.options = Merge(defaults, options);</span>
+<span class="cstat-no" title="statement not covered" >    this.options = Merge(defaults, options);</span>
 &nbsp;
     // File pool, any file passed into the Revisioner is stored in this object
-<span class="cstat-no" title="statement not covered">    this.files = {};</span>
-<span class="cstat-no" title="statement not covered">    this.filesTemp = [];</span>
+<span class="cstat-no" title="statement not covered" >    this.files = {};</span>
+<span class="cstat-no" title="statement not covered" >    this.filesTemp = [];</span>
 &nbsp;
     // Stores the combined hash of all processed files, used to create the version file
-<span class="cstat-no" title="statement not covered">    this.hashCombined = '';</span>
+<span class="cstat-no" title="statement not covered" >    this.hashCombined = '';</span>
 &nbsp;
     // Stores the before : after path of assets, used to create the manifset file
-<span class="cstat-no" title="statement not covered">    this.manifest = {};</span>
+<span class="cstat-no" title="statement not covered" >    this.manifest = {};</span>
 &nbsp;
     // Enable / Disable logger based on supplied options
-<span class="cstat-no" title="statement not covered">    this.log = (this.options.debug) ? Gutil.log : <span class="fstat-no" title="function not covered">function () {</span>};</span>
+<span class="cstat-no" title="statement not covered" >    this.log = (this.options.debug) ? Gutil.log : <span class="fstat-no" title="function not covered" >function () {</span>};</span>
 &nbsp;
     // Make tools available client side callbacks supplied in options
-<span class="cstat-no" title="statement not covered">    this.Tool = Tool;</span>
+<span class="cstat-no" title="statement not covered" >    this.Tool = Tool;</span>
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var nonFileNameChar = '[^a-zA-Z0-9\\.\\-\\_\\/]';</span>
-<span class="cstat-no" title="statement not covered">    var qoutes = '\'|"';</span>
+<span class="cstat-no" title="statement not covered" >    var nonFileNameChar = '[^a-zA-Z0-9\\.\\-\\_\\/]';</span>
+<span class="cstat-no" title="statement not covered" >    var qoutes = '\'|"';</span>
 &nbsp;
-<span class="fstat-no" title="function not covered">    function referenceToRegexs(reference) {</span>
-<span class="cstat-no" title="statement not covered">      var escapedRefPathBase = Tool.path_without_ext(reference.path).replace(/([^0-9a-z])/ig, '\\$1');</span>
-<span class="cstat-no" title="statement not covered">      var escapedRefPathExt = Path.extname(reference.path).replace(/([^0-9a-z])/ig, '\\$1');</span>
+<span class="fstat-no" title="function not covered" >    function referenceToRegexs(reference) {</span>
+<span class="cstat-no" title="statement not covered" >      var escapedRefPathBase = Tool.path_without_ext(reference.path).replace(/([^0-9a-z])/ig, '\\$1');</span>
+<span class="cstat-no" title="statement not covered" >      var escapedRefPathExt = Path.extname(reference.path).replace(/([^0-9a-z])/ig, '\\$1');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      var regExp, regExps = [];</span>
-<span class="cstat-no" title="statement not covered">      var isJSReference = reference.path.match(/\.js$/);</span>
+<span class="cstat-no" title="statement not covered" >      var regExp, regExps = [];</span>
+<span class="cstat-no" title="statement not covered" >      var isJSReference = reference.path.match(/\.js$/);</span>
 &nbsp;
       // Extensionless javascript file references has to to be qouted
-<span class="cstat-no" title="statement not covered">      if (isJSReference) {</span>
-<span class="cstat-no" title="statement not covered">        regExp = '('+ qoutes +')(' + escapedRefPathBase + ')()('+ qoutes + '|$)';</span>
-<span class="cstat-no" title="statement not covered">        regExps.push(new RegExp(regExp, 'g'));</span>
+<span class="cstat-no" title="statement not covered" >      if (isJSReference) {</span>
+<span class="cstat-no" title="statement not covered" >        regExp = '('+ qoutes +')(' + escapedRefPathBase + ')()('+ qoutes + '|$)';</span>
+<span class="cstat-no" title="statement not covered" >        regExps.push(new RegExp(regExp, 'g'));</span>
       }
 &nbsp;
       // Expect left and right sides of the reference to be a non-filename type character, escape special regex chars
-<span class="cstat-no" title="statement not covered">      regExp = '('+ nonFileNameChar +')(' + escapedRefPathBase + ')(' +  escapedRefPathExt + ')('+ nonFileNameChar + '|$)';</span>
-<span class="cstat-no" title="statement not covered">      regExps.push(new RegExp(regExp, 'g'));</span>
+<span class="cstat-no" title="statement not covered" >      regExp = '('+ nonFileNameChar +')(' + escapedRefPathBase + ')(' +  escapedRefPathExt + ')('+ nonFileNameChar + '|$)';</span>
+<span class="cstat-no" title="statement not covered" >      regExps.push(new RegExp(regExp, 'g'));</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      return regExps;</span>
+<span class="cstat-no" title="statement not covered" >      return regExps;</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered">    function annotator(contents, path) {</span>
-<span class="cstat-no" title="statement not covered">      return [{'contents': contents}];</span>
+<span class="fstat-no" title="function not covered" >    function annotator(contents, path) {</span>
+<span class="cstat-no" title="statement not covered" >      return [{'contents': contents}];</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered">    function replacer(fragment, replaceRegExp, newReference, referencedFile) {</span>
-<span class="cstat-no" title="statement not covered">       fragment.contents = fragment.contents.replace(replaceRegExp, '$1' + newReference + '$3$4');</span>
+<span class="fstat-no" title="function not covered" >    function replacer(fragment, replaceRegExp, newReference, referencedFile) {</span>
+<span class="cstat-no" title="statement not covered" >       fragment.contents = fragment.contents.replace(replaceRegExp, '$1' + newReference + '$3$4');</span>
     }
 &nbsp;
   };
 &nbsp;
-  Revisioner.prototype.versionFile = <span class="fstat-no" title="function not covered">function () {</span>
+  Revisioner.prototype.versionFile = <span class="fstat-no" title="function not covered" >function () {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var out = {</span>
+<span class="cstat-no" title="statement not covered" >    var out = {</span>
       hash: this.hashCombined,
       timestamp: new Date()
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var file = new Gutil.File({</span>
+<span class="cstat-no" title="statement not covered" >    var file = new Gutil.File({</span>
       cwd: this.pathCwd,
       base: this.pathBase,
       path: Path.join(this.pathBase, this.options.fileNameVersion),
@@ -1278,74 +1280,74 @@ var Revisioner = (function () {
       revisioner: this
     });
 &nbsp;
-<span class="cstat-no" title="statement not covered">    file.revisioner = this;</span>
-<span class="cstat-no" title="statement not covered">    return file;</span>
+<span class="cstat-no" title="statement not covered" >    file.revisioner = this;</span>
+<span class="cstat-no" title="statement not covered" >    return file;</span>
 &nbsp;
   };
 &nbsp;
-  Revisioner.prototype.manifestFile = <span class="fstat-no" title="function not covered">function () {</span>
+  Revisioner.prototype.manifestFile = <span class="fstat-no" title="function not covered" >function () {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var file = new Gutil.File({</span>
+<span class="cstat-no" title="statement not covered" >    var file = new Gutil.File({</span>
       cwd: this.pathCwd,
       base: this.pathBase,
       path: Path.join(this.pathBase, this.options.fileNameManifest),
       contents: new Buffer(JSON.stringify(this.manifest, null, 2)),
     });
 &nbsp;
-<span class="cstat-no" title="statement not covered">    file.revisioner = this;</span>
-<span class="cstat-no" title="statement not covered">    return file;</span>
+<span class="cstat-no" title="statement not covered" >    file.revisioner = this;</span>
+<span class="cstat-no" title="statement not covered" >    return file;</span>
 &nbsp;
   };
 &nbsp;
   /**
    * Used to feed files into the Revisioner, sets up the original filename and hash.
    */
-  Revisioner.prototype.processFile = <span class="fstat-no" title="function not covered">function (file) {</span>
+  Revisioner.prototype.processFile = <span class="fstat-no" title="function not covered" >function (file) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    if (!this.pathCwd) {</span>
-<span class="cstat-no" title="statement not covered">      this.pathCwd = file.cwd;</span>
+<span class="cstat-no" title="statement not covered" >    if (!this.pathCwd) {</span>
+<span class="cstat-no" title="statement not covered" >      this.pathCwd = file.cwd;</span>
     }
 &nbsp;
     // Chnage relative paths to absolute
-<span class="cstat-no" title="statement not covered">    if (!file.base.match(/^(\/|[a-z]:)/i)) {</span>
-<span class="cstat-no" title="statement not covered">      file.base = Tool.join_path(file.cwd, file.base);</span>
+<span class="cstat-no" title="statement not covered" >    if (!file.base.match(/^(\/|[a-z]:)/i)) {</span>
+<span class="cstat-no" title="statement not covered" >      file.base = Tool.join_path(file.cwd, file.base);</span>
     }
 &nbsp;
     // Normalize the base common to all the files
-<span class="cstat-no" title="statement not covered">    if (!this.pathBase) {</span>
+<span class="cstat-no" title="statement not covered" >    if (!this.pathBase) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      this.pathBase = file.base;</span>
+<span class="cstat-no" title="statement not covered" >      this.pathBase = file.base;</span>
 &nbsp;
-    } else <span class="cstat-no" title="statement not covered">if (file.base.indexOf(this.pathBase) === -1) {</span>
+    } else <span class="cstat-no" title="statement not covered" >if (file.base.indexOf(this.pathBase) === -1) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      var levelsBase = this.pathBase.split(/[\/|\\]/);</span>
-<span class="cstat-no" title="statement not covered">      var levelsFile = file.base.split(/[\/|\\]/);</span>
+<span class="cstat-no" title="statement not covered" >      var levelsBase = this.pathBase.split(/[\/|\\]/);</span>
+<span class="cstat-no" title="statement not covered" >      var levelsFile = file.base.split(/[\/|\\]/);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      var common = [];</span>
-<span class="cstat-no" title="statement not covered">      for (var level = 0, length = levelsFile.length; level &lt; length; level++) {</span>
+<span class="cstat-no" title="statement not covered" >      var common = [];</span>
+<span class="cstat-no" title="statement not covered" >      for (var level = 0, length = levelsFile.length; level &lt; length; level++) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">        if (level &lt; levelsBase.length &amp;&amp; level &lt; levelsFile.length &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >        if (level &lt; levelsBase.length &amp;&amp; level &lt; levelsFile.length &amp;&amp;</span>
             levelsBase[level] === levelsFile[level]) {
-<span class="cstat-no" title="statement not covered">          common.push(levelsFile[level]);</span>
-<span class="cstat-no" title="statement not covered">          continue;</span>
+<span class="cstat-no" title="statement not covered" >          common.push(levelsFile[level]);</span>
+<span class="cstat-no" title="statement not covered" >          continue;</span>
         }
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered">      if (common[common.length - 1] !== '') {</span>
-<span class="cstat-no" title="statement not covered">        common.push('');</span>
+<span class="cstat-no" title="statement not covered" >      if (common[common.length - 1] !== '') {</span>
+<span class="cstat-no" title="statement not covered" >        common.push('');</span>
       }
-<span class="cstat-no" title="statement not covered">      this.pathBase = common.join('/');</span>
+<span class="cstat-no" title="statement not covered" >      this.pathBase = common.join('/');</span>
 &nbsp;
     }
 &nbsp;
     // Set original values before any processing occurs
-<span class="cstat-no" title="statement not covered">    file.revPathOriginal = file.revOrigPath = file.path;</span>
-<span class="cstat-no" title="statement not covered">    file.revFilenameExtOriginal = Path.extname(file.path);</span>
-<span class="cstat-no" title="statement not covered">    file.revFilenameOriginal = Path.basename(file.path, file.revFilenameExtOriginal);</span>
-<span class="cstat-no" title="statement not covered">    file.revHashOriginal = this.Tool.md5(String(file.contents));</span>
-<span class="cstat-no" title="statement not covered">    file.revContentsOriginal = file.contents;</span>
+<span class="cstat-no" title="statement not covered" >    file.revPathOriginal = file.revOrigPath = file.path;</span>
+<span class="cstat-no" title="statement not covered" >    file.revFilenameExtOriginal = Path.extname(file.path);</span>
+<span class="cstat-no" title="statement not covered" >    file.revFilenameOriginal = Path.basename(file.path, file.revFilenameExtOriginal);</span>
+<span class="cstat-no" title="statement not covered" >    file.revHashOriginal = this.Tool.md5(String(file.contents));</span>
+<span class="cstat-no" title="statement not covered" >    file.revContentsOriginal = file.contents;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    this.filesTemp.push(file);</span>
+<span class="cstat-no" title="statement not covered" >    this.filesTemp.push(file);</span>
 &nbsp;
   };
 &nbsp;
@@ -1353,35 +1355,35 @@ var Revisioner = (function () {
    * Resolves references, renames files, updates references.  To be called after all the files
    * have been fed into the Revisioner (ie. At the end of the file stream)
    */
-  Revisioner.prototype.run = <span class="fstat-no" title="function not covered">function () {</span>
+  Revisioner.prototype.run = <span class="fstat-no" title="function not covered" >function () {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    this.hashCombined = '';</span>
+<span class="cstat-no" title="statement not covered" >    this.hashCombined = '';</span>
 &nbsp;
     // Go through and correct the base path now that we have proccessed all the files coming in
-<span class="cstat-no" title="statement not covered">    for (var i = 0, length = this.filesTemp.length; i &lt; length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = 0, length = this.filesTemp.length; i &lt; length; i++) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      this.filesTemp[i].base = this.pathBase;</span>
-<span class="cstat-no" title="statement not covered">      var path = this.Tool.get_relative_path(this.pathBase, this.filesTemp[i].path);</span>
-<span class="cstat-no" title="statement not covered">      this.files[path] = this.filesTemp[i];</span>
+<span class="cstat-no" title="statement not covered" >      this.filesTemp[i].base = this.pathBase;</span>
+<span class="cstat-no" title="statement not covered" >      var path = this.Tool.get_relative_path(this.pathBase, this.filesTemp[i].path);</span>
+<span class="cstat-no" title="statement not covered" >      this.files[path] = this.filesTemp[i];</span>
 &nbsp;
     }
 &nbsp;
     // Resolve references to other files
-<span class="cstat-no" title="statement not covered">    for (var path in this.files) {</span>
-<span class="cstat-no" title="statement not covered">      this.resolveReferences(this.files[path]);</span>
+<span class="cstat-no" title="statement not covered" >    for (var path in this.files) {</span>
+<span class="cstat-no" title="statement not covered" >      this.resolveReferences(this.files[path]);</span>
     }
 &nbsp;
     // Resolve and set revisioned filename based on hash + reference hashes and ignore rules
-<span class="cstat-no" title="statement not covered">    for (var path in this.files) {</span>
-<span class="cstat-no" title="statement not covered">      this.revisionFilename(this.files[path]);</span>
+<span class="cstat-no" title="statement not covered" >    for (var path in this.files) {</span>
+<span class="cstat-no" title="statement not covered" >      this.revisionFilename(this.files[path]);</span>
     }
 &nbsp;
     // Consolidate the concatinated hash of all the files, into a single hash for the version file
-<span class="cstat-no" title="statement not covered">    this.hashCombined = this.Tool.md5(this.hashCombined);</span>
+<span class="cstat-no" title="statement not covered" >    this.hashCombined = this.Tool.md5(this.hashCombined);</span>
 &nbsp;
     // Update references to revisioned filenames
-<span class="cstat-no" title="statement not covered">    for (var path in this.files) {</span>
-<span class="cstat-no" title="statement not covered">      this.updateReferences(this.files[path]);</span>
+<span class="cstat-no" title="statement not covered" >    for (var path in this.files) {</span>
+<span class="cstat-no" title="statement not covered" >      this.updateReferences(this.files[path]);</span>
     }
 &nbsp;
   };
@@ -1389,42 +1391,42 @@ var Revisioner = (function () {
   /**
    * Go through each file in the file pool, search for references to any other file in the pool.
    */
-  Revisioner.prototype.resolveReferences = <span class="fstat-no" title="function not covered">function (fileResolveReferencesIn) {</span>
+  Revisioner.prototype.resolveReferences = <span class="fstat-no" title="function not covered" >function (fileResolveReferencesIn) {</span>
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var contents = String(fileResolveReferencesIn.revContentsOriginal);</span>
-<span class="cstat-no" title="statement not covered">    fileResolveReferencesIn.revReferencePaths = {};</span>
-<span class="cstat-no" title="statement not covered">    fileResolveReferencesIn.revReferenceFiles = {};</span>
-<span class="cstat-no" title="statement not covered">    var referenceGroupRelative = [];</span>
-<span class="cstat-no" title="statement not covered">    var referenceGroupAbsolute = [];</span>
-<span class="cstat-no" title="statement not covered">    fileResolveReferencesIn.referenceGroupsContainer = {</span>
+<span class="cstat-no" title="statement not covered" >    var contents = String(fileResolveReferencesIn.revContentsOriginal);</span>
+<span class="cstat-no" title="statement not covered" >    fileResolveReferencesIn.revReferencePaths = {};</span>
+<span class="cstat-no" title="statement not covered" >    fileResolveReferencesIn.revReferenceFiles = {};</span>
+<span class="cstat-no" title="statement not covered" >    var referenceGroupRelative = [];</span>
+<span class="cstat-no" title="statement not covered" >    var referenceGroupAbsolute = [];</span>
+<span class="cstat-no" title="statement not covered" >    fileResolveReferencesIn.referenceGroupsContainer = {</span>
       'relative': referenceGroupRelative,
       'absolute': referenceGroupAbsolute
     };
 &nbsp;
     // Don't try and resolve references in binary files or files that have been blacklisted
-<span class="cstat-no" title="statement not covered">    if (this.Tool.is_binary_file(fileResolveReferencesIn) || !this.shouldSearchFile(fileResolveReferencesIn)) {</span>
-<span class="cstat-no" title="statement not covered">      return;</span>
+<span class="cstat-no" title="statement not covered" >    if (this.Tool.is_binary_file(fileResolveReferencesIn) || !this.shouldSearchFile(fileResolveReferencesIn)) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
     }
 &nbsp;
     // For the current file (fileResolveReferencesIn), look for references to any other file in the project
-<span class="cstat-no" title="statement not covered">    for (var path in this.files) {</span>
+<span class="cstat-no" title="statement not covered" >    for (var path in this.files) {</span>
 &nbsp;
       // Organize them by relative vs absolute reference types
-<span class="cstat-no" title="statement not covered">      var fileCurrentReference = this.files[path];</span>
-<span class="cstat-no" title="statement not covered">      var references;</span>
+<span class="cstat-no" title="statement not covered" >      var fileCurrentReference = this.files[path];</span>
+<span class="cstat-no" title="statement not covered" >      var references;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      references = this.Tool.get_reference_representations_relative(fileCurrentReference, fileResolveReferencesIn);</span>
-<span class="cstat-no" title="statement not covered">      for (var i = 0, length = references.length; i &lt; length; i++) {</span>
-<span class="cstat-no" title="statement not covered">        referenceGroupRelative.push({</span>
+<span class="cstat-no" title="statement not covered" >      references = this.Tool.get_reference_representations_relative(fileCurrentReference, fileResolveReferencesIn);</span>
+<span class="cstat-no" title="statement not covered" >      for (var i = 0, length = references.length; i &lt; length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        referenceGroupRelative.push({</span>
           'file': this.files[path],
           'path': references[i]
         });
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered">      references = this.Tool.get_reference_representations_absolute(fileCurrentReference, fileResolveReferencesIn);</span>
-<span class="cstat-no" title="statement not covered">      for (var i = 0, length = references.length; i &lt; length; i++) {</span>
-<span class="cstat-no" title="statement not covered">        referenceGroupAbsolute.push({</span>
+<span class="cstat-no" title="statement not covered" >      references = this.Tool.get_reference_representations_absolute(fileCurrentReference, fileResolveReferencesIn);</span>
+<span class="cstat-no" title="statement not covered" >      for (var i = 0, length = references.length; i &lt; length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >        referenceGroupAbsolute.push({</span>
           'file': this.files[path],
           'path': references[i]
         });
@@ -1433,30 +1435,30 @@ var Revisioner = (function () {
     }
 &nbsp;
     // Priority relative references higher than absolute
-<span class="cstat-no" title="statement not covered">    for (var referenceType in fileResolveReferencesIn.referenceGroupsContainer) {</span>
-<span class="cstat-no" title="statement not covered">      var referenceGroup = fileResolveReferencesIn.referenceGroupsContainer[referenceType];</span>
+<span class="cstat-no" title="statement not covered" >    for (var referenceType in fileResolveReferencesIn.referenceGroupsContainer) {</span>
+<span class="cstat-no" title="statement not covered" >      var referenceGroup = fileResolveReferencesIn.referenceGroupsContainer[referenceType];</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      for (var referenceIndex = 0, referenceGroupLength = referenceGroup.length; referenceIndex &lt; referenceGroupLength; referenceIndex++) {</span>
-<span class="cstat-no" title="statement not covered">        var reference = referenceGroup[referenceIndex];</span>
-<span class="cstat-no" title="statement not covered">        var regExps = this.options.referenceToRegexs(reference);</span>
+<span class="cstat-no" title="statement not covered" >      for (var referenceIndex = 0, referenceGroupLength = referenceGroup.length; referenceIndex &lt; referenceGroupLength; referenceIndex++) {</span>
+<span class="cstat-no" title="statement not covered" >        var reference = referenceGroup[referenceIndex];</span>
+<span class="cstat-no" title="statement not covered" >        var regExps = this.options.referenceToRegexs(reference);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">        for (var j = 0; j &lt; regExps.length; j++) {</span>
-<span class="cstat-no" title="statement not covered">          if (contents.match(regExps[j])) {</span>
+<span class="cstat-no" title="statement not covered" >        for (var j = 0; j &lt; regExps.length; j++) {</span>
+<span class="cstat-no" title="statement not covered" >          if (contents.match(regExps[j])) {</span>
             // Only register this reference if we don't have one already by the same path
-<span class="cstat-no" title="statement not covered">            if (!fileResolveReferencesIn.revReferencePaths[reference.path]) {</span>
+<span class="cstat-no" title="statement not covered" >            if (!fileResolveReferencesIn.revReferencePaths[reference.path]) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">              fileResolveReferencesIn.revReferenceFiles[reference.file.path] = reference.file;</span>
-<span class="cstat-no" title="statement not covered">              fileResolveReferencesIn.revReferencePaths[reference.path] = {</span>
+<span class="cstat-no" title="statement not covered" >              fileResolveReferencesIn.revReferenceFiles[reference.file.path] = reference.file;</span>
+<span class="cstat-no" title="statement not covered" >              fileResolveReferencesIn.revReferencePaths[reference.path] = {</span>
                 'regExps': [regExps[j]],
                 'file': reference.file,
                 'path': reference.path
               };
-<span class="cstat-no" title="statement not covered">              this.log('gulp-rev-all:', 'Found', referenceType, 'reference [', Gutil.colors.magenta(reference.path), '] -&gt; [', Gutil.colors.green(reference.file.path), '] in [', Gutil.colors.blue(fileResolveReferencesIn.revPathOriginal), ']');</span>
-            } else <span class="cstat-no" title="statement not covered">if (fileResolveReferencesIn.revReferencePaths[reference.path].file.revPathOriginal === reference.file.revPathOriginal) {</span>
+<span class="cstat-no" title="statement not covered" >              this.log('gulp-rev-all:', 'Found', referenceType, 'reference [', Gutil.colors.magenta(reference.path), '] -&gt; [', Gutil.colors.green(reference.file.path), '] in [', Gutil.colors.blue(fileResolveReferencesIn.revPathOriginal), ']');</span>
+            } else <span class="cstat-no" title="statement not covered" >if (fileResolveReferencesIn.revReferencePaths[reference.path].file.revPathOriginal === reference.file.revPathOriginal) {</span>
               // Append the other regexes to account for inconsitent use
-<span class="cstat-no" title="statement not covered">              fileResolveReferencesIn.revReferencePaths[reference.path].regExps.push(regExps[j]);</span>
+<span class="cstat-no" title="statement not covered" >              fileResolveReferencesIn.revReferencePaths[reference.path].regExps.push(regExps[j]);</span>
             } else {
-<span class="cstat-no" title="statement not covered">              this.log('gulp-rev-all:', 'Possible ambiguous reference detected [', Gutil.colors.red(fileResolveReferencesIn.revReferencePaths[reference.path].path), ' (', fileResolveReferencesIn.revReferencePaths[reference.path].file.revPathOriginal, ')] &lt;-&gt; [', Gutil.colors.red(reference.path), '(', Gutil.colors.red(reference.file.revPathOriginal), ')]');</span>
+<span class="cstat-no" title="statement not covered" >              this.log('gulp-rev-all:', 'Possible ambiguous reference detected [', Gutil.colors.red(fileResolveReferencesIn.revReferencePaths[reference.path].path), ' (', fileResolveReferencesIn.revReferencePaths[reference.path].file.revPathOriginal, ')] &lt;-&gt; [', Gutil.colors.red(reference.path), '(', Gutil.colors.red(reference.file.revPathOriginal), ')]');</span>
             }
           }
         }
@@ -1470,37 +1472,37 @@ var Revisioner = (function () {
    * Calculate hash based contents and references.
    * hash = hash(file hash + hash(hash references 1 + hash reference N)..)
    */
-  Revisioner.prototype.calculateHash = <span class="fstat-no" title="function not covered">function (file, stack) {</span>
+  Revisioner.prototype.calculateHash = <span class="fstat-no" title="function not covered" >function (file, stack) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    stack = stack || [];</span>
-<span class="cstat-no" title="statement not covered">    var hash = file.revHashOriginal;</span>
+<span class="cstat-no" title="statement not covered" >    stack = stack || [];</span>
+<span class="cstat-no" title="statement not covered" >    var hash = file.revHashOriginal;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    stack.push(file);</span>
+<span class="cstat-no" title="statement not covered" >    stack.push(file);</span>
 &nbsp;
     // Resolve hash for child references
-<span class="cstat-no" title="statement not covered">    if (Object.keys(file.revReferenceFiles).length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >    if (Object.keys(file.revReferenceFiles).length &gt; 0) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      for (var key in file.revReferenceFiles) {</span>
+<span class="cstat-no" title="statement not covered" >      for (var key in file.revReferenceFiles) {</span>
 &nbsp;
         // Prevent infinite loops caused by circular references, don't recurse if we've already encountered this file
-<span class="cstat-no" title="statement not covered">        if (stack.indexOf(file.revReferenceFiles[key]) === -1) {</span>
-<span class="cstat-no" title="statement not covered">          hash += this.calculateHash(file.revReferenceFiles[key], stack);</span>
+<span class="cstat-no" title="statement not covered" >        if (stack.indexOf(file.revReferenceFiles[key]) === -1) {</span>
+<span class="cstat-no" title="statement not covered" >          hash += this.calculateHash(file.revReferenceFiles[key], stack);</span>
         }
 &nbsp;
       }
 &nbsp;
       // This file's hash should change if any of its references will be prefixed.
-<span class="cstat-no" title="statement not covered">      if (this.options.prefix &amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >      if (this.options.prefix &amp;&amp;</span>
           Object.keys(file.referenceGroupsContainer.absolute).length) {
-<span class="cstat-no" title="statement not covered">        hash += this.options.prefix;</span>
+<span class="cstat-no" title="statement not covered" >        hash += this.options.prefix;</span>
       }
 &nbsp;
       // Consolidate many hashes into one
-<span class="cstat-no" title="statement not covered">      hash = this.Tool.md5(hash);</span>
+<span class="cstat-no" title="statement not covered" >      hash = this.Tool.md5(hash);</span>
 &nbsp;
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    return hash;</span>
+<span class="cstat-no" title="statement not covered" >    return hash;</span>
 &nbsp;
   };
 &nbsp;
@@ -1508,111 +1510,111 @@ var Revisioner = (function () {
   /**
    * Revision filename based on internal contents + references.
    */
-  Revisioner.prototype.revisionFilename = <span class="fstat-no" title="function not covered">function (file) {</span>
+  Revisioner.prototype.revisionFilename = <span class="fstat-no" title="function not covered" >function (file) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var filename = file.revFilenameOriginal;</span>
-<span class="cstat-no" title="statement not covered">    var ext = file.revFilenameExtOriginal;</span>
+<span class="cstat-no" title="statement not covered" >    var filename = file.revFilenameOriginal;</span>
+<span class="cstat-no" title="statement not covered" >    var ext = file.revFilenameExtOriginal;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    file.revHash = this.calculateHash(file);</span>
+<span class="cstat-no" title="statement not covered" >    file.revHash = this.calculateHash(file);</span>
 &nbsp;
     // Allow the client to transform the final filename
-<span class="cstat-no" title="statement not covered">    if (this.options.transformFilename) {</span>
-<span class="cstat-no" title="statement not covered">      filename = this.options.transformFilename.call(this, file, file.revHash);</span>
+<span class="cstat-no" title="statement not covered" >    if (this.options.transformFilename) {</span>
+<span class="cstat-no" title="statement not covered" >      filename = this.options.transformFilename.call(this, file, file.revHash);</span>
     } else {
-<span class="cstat-no" title="statement not covered">      filename = filename + '.' + file.revHash.substr(0, this.options.hashLength) + ext;</span>
+<span class="cstat-no" title="statement not covered" >      filename = filename + '.' + file.revHash.substr(0, this.options.hashLength) + ext;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    file.revFilename = filename;</span>
+<span class="cstat-no" title="statement not covered" >    file.revFilename = filename;</span>
     // file.revFilenameNoExt = Tool.path_without_ext(file.revFilename);
 &nbsp;
-<span class="cstat-no" title="statement not covered">    if (this.shouldFileBeRenamed(file)) {</span>
-<span class="cstat-no" title="statement not covered">      file.path = this.Tool.join_path(Path.dirname(file.path), filename);</span>
+<span class="cstat-no" title="statement not covered" >    if (this.shouldFileBeRenamed(file)) {</span>
+<span class="cstat-no" title="statement not covered" >      file.path = this.Tool.join_path(Path.dirname(file.path), filename);</span>
     }
 &nbsp;
     // Maintain the combined hash used in version file
-<span class="cstat-no" title="statement not covered">    this.hashCombined += file.revHash;</span>
+<span class="cstat-no" title="statement not covered" >    this.hashCombined += file.revHash;</span>
 &nbsp;
     // Maintain the manifset file
-<span class="cstat-no" title="statement not covered">    var pathOriginal = this.Tool.get_relative_path(this.pathBase, file.revPathOriginal, true);</span>
-<span class="cstat-no" title="statement not covered">    var pathRevisioned = this.Tool.get_relative_path(file.base, file.path, true);</span>
+<span class="cstat-no" title="statement not covered" >    var pathOriginal = this.Tool.get_relative_path(this.pathBase, file.revPathOriginal, true);</span>
+<span class="cstat-no" title="statement not covered" >    var pathRevisioned = this.Tool.get_relative_path(file.base, file.path, true);</span>
     // Add only specific file types to the manifest file
-<span class="cstat-no" title="statement not covered">    if (this.options.includeFilesInManifest.indexOf(ext) !== -1) {</span>
-<span class="cstat-no" title="statement not covered">        this.manifest[pathOriginal] = pathRevisioned;</span>
+<span class="cstat-no" title="statement not covered" >    if (this.options.includeFilesInManifest.indexOf(ext) !== -1) {</span>
+<span class="cstat-no" title="statement not covered" >        this.manifest[pathOriginal] = pathRevisioned;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    file.revPath = pathRevisioned;</span>
+<span class="cstat-no" title="statement not covered" >    file.revPath = pathRevisioned;</span>
 &nbsp;
   };
 &nbsp;
   /**
    * Update the contents of a file with the revisioned filenames of its references.
    */
-  Revisioner.prototype.updateReferences = <span class="fstat-no" title="function not covered">function (file) {</span>
+  Revisioner.prototype.updateReferences = <span class="fstat-no" title="function not covered" >function (file) {</span>
 &nbsp;
     // Don't try and update references in binary files or blacklisted files
-<span class="cstat-no" title="statement not covered">    if (this.Tool.is_binary_file(file) || !this.shouldSearchFile(file)) {</span>
-<span class="cstat-no" title="statement not covered">      return;</span>
+<span class="cstat-no" title="statement not covered" >    if (this.Tool.is_binary_file(file) || !this.shouldSearchFile(file)) {</span>
+<span class="cstat-no" title="statement not covered" >      return;</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var contents = String(file.revContentsOriginal);</span>
-<span class="cstat-no" title="statement not covered">    var annotatedContent = this.options.annotator(contents, file.revPathOriginal);</span>
+<span class="cstat-no" title="statement not covered" >    var contents = String(file.revContentsOriginal);</span>
+<span class="cstat-no" title="statement not covered" >    var annotatedContent = this.options.annotator(contents, file.revPathOriginal);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    for (var pathReference in file.revReferencePaths) {</span>
+<span class="cstat-no" title="statement not covered" >    for (var pathReference in file.revReferencePaths) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">      var reference = file.revReferencePaths[pathReference];</span>
+<span class="cstat-no" title="statement not covered" >      var reference = file.revReferencePaths[pathReference];</span>
 &nbsp;
       // Replace regular filename with revisioned version
-<span class="cstat-no" title="statement not covered">      var referencePath = reference.path.substr(0, reference.path.length - (reference.file.revFilenameOriginal.length + reference.file.revFilenameExtOriginal.length));</span>
-<span class="cstat-no" title="statement not covered">      var pathReferenceReplace = referencePath + reference.file.revFilename;</span>
+<span class="cstat-no" title="statement not covered" >      var referencePath = reference.path.substr(0, reference.path.length - (reference.file.revFilenameOriginal.length + reference.file.revFilenameExtOriginal.length));</span>
+<span class="cstat-no" title="statement not covered" >      var pathReferenceReplace = referencePath + reference.file.revFilename;</span>
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered">      if (this.options.transformPath) {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.options.transformPath) {</span>
         // Transform path using client supplied transformPath callback,
-<span class="cstat-no" title="statement not covered">        pathReferenceReplace = this.options.transformPath.call(this, pathReferenceReplace, reference.path, reference.file, file);</span>
-      } else <span class="cstat-no" title="statement not covered">if (this.options.prefix &amp;&amp; pathReferenceReplace[0] === '/') {</span>
+<span class="cstat-no" title="statement not covered" >        pathReferenceReplace = this.options.transformPath.call(this, pathReferenceReplace, reference.path, reference.file, file);</span>
+      } else <span class="cstat-no" title="statement not covered" >if (this.options.prefix &amp;&amp; pathReferenceReplace[0] === '/') {</span>
         // Append with user supplied prefix
-<span class="cstat-no" title="statement not covered">        pathReferenceReplace = this.Tool.join_path_url(this.options.prefix, pathReferenceReplace);</span>
+<span class="cstat-no" title="statement not covered" >        pathReferenceReplace = this.Tool.join_path_url(this.options.prefix, pathReferenceReplace);</span>
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered">      if (this.shouldUpdateReference(reference.file)) {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.shouldUpdateReference(reference.file)) {</span>
         // The extention should remain constant so we dont add extentions to references without extentions
-<span class="cstat-no" title="statement not covered">        var noExtReplace = Tool.path_without_ext(pathReferenceReplace);</span>
+<span class="cstat-no" title="statement not covered" >        var noExtReplace = Tool.path_without_ext(pathReferenceReplace);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">        for(var i = 0; i &lt; annotatedContent.length; i++){</span>
-<span class="cstat-no" title="statement not covered">          for(var j = 0; j &lt; reference.regExps.length; j++){</span>
-<span class="cstat-no" title="statement not covered">            this.options.replacer(annotatedContent[i], reference.regExps[j], noExtReplace, reference.file);</span>
+<span class="cstat-no" title="statement not covered" >        for(var i = 0; i &lt; annotatedContent.length; i++){</span>
+<span class="cstat-no" title="statement not covered" >          for(var j = 0; j &lt; reference.regExps.length; j++){</span>
+<span class="cstat-no" title="statement not covered" >            this.options.replacer(annotatedContent[i], reference.regExps[j], noExtReplace, reference.file);</span>
           }
         }
       }
 &nbsp;
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    contents = annotatedContent.map(<span class="fstat-no" title="function not covered">function(annotation) {</span> <span class="cstat-no" title="statement not covered">return annotation.contents; </span>}).join('');</span>
-<span class="cstat-no" title="statement not covered">    file.contents = new Buffer(contents);</span>
+<span class="cstat-no" title="statement not covered" >    contents = annotatedContent.map(<span class="fstat-no" title="function not covered" >function(annotation) {</span> <span class="cstat-no" title="statement not covered" >return annotation.contents; </span>}).join('');</span>
+<span class="cstat-no" title="statement not covered" >    file.contents = new Buffer(contents);</span>
 &nbsp;
   };
 &nbsp;
   /**
    * Determines if a file should be renamed based on dontRenameFile supplied in options.
    */
-  Revisioner.prototype.shouldFileBeRenamed = <span class="fstat-no" title="function not covered">function (file) {</span>
+  Revisioner.prototype.shouldFileBeRenamed = <span class="fstat-no" title="function not covered" >function (file) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
+<span class="cstat-no" title="statement not covered" >    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontGlobal.length; i--;) {</span>
-<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
-<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
-<span class="cstat-no" title="statement not covered">        return false;</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = this.options.dontGlobal.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered" >      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered" >      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontRenameFile.length; i--;) {</span>
-<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontRenameFile[i] instanceof RegExp) ? this.options.dontRenameFile[i] : new RegExp(this.options.dontRenameFile[i] + '$', 'ig');</span>
-<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
-<span class="cstat-no" title="statement not covered">        return false;</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = this.options.dontRenameFile.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered" >      var regex = (this.options.dontRenameFile[i] instanceof RegExp) ? this.options.dontRenameFile[i] : new RegExp(this.options.dontRenameFile[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered" >      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
       }
     }
-<span class="cstat-no" title="statement not covered">    return true;</span>
+<span class="cstat-no" title="statement not covered" >    return true;</span>
 &nbsp;
   };
 &nbsp;
@@ -1620,49 +1622,49 @@ var Revisioner = (function () {
   /**
    * Determines if a particular reference should be updated across assets based on dontUpdateReference supplied in options.
    */
-  Revisioner.prototype.shouldUpdateReference = <span class="fstat-no" title="function not covered">function (file) {</span>
+  Revisioner.prototype.shouldUpdateReference = <span class="fstat-no" title="function not covered" >function (file) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
+<span class="cstat-no" title="statement not covered" >    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontGlobal.length; i--;) {</span>
-<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
-<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
-<span class="cstat-no" title="statement not covered">        return false;</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = this.options.dontGlobal.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered" >      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered" >      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontUpdateReference.length; i--;) {</span>
-<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontUpdateReference[i] instanceof RegExp) ? this.options.dontUpdateReference[i] : new RegExp(this.options.dontUpdateReference[i] + '$', 'ig');</span>
-<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
-<span class="cstat-no" title="statement not covered">        return false;</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = this.options.dontUpdateReference.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered" >      var regex = (this.options.dontUpdateReference[i] instanceof RegExp) ? this.options.dontUpdateReference[i] : new RegExp(this.options.dontUpdateReference[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered" >      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
       }
     }
     
-<span class="cstat-no" title="statement not covered">    return true;</span>
+<span class="cstat-no" title="statement not covered" >    return true;</span>
 &nbsp;
   };
 &nbsp;
   /**
    * Determines if a particular reference should be updated across assets based on dontUpdateReference supplied in options.
    */
-  Revisioner.prototype.shouldSearchFile = <span class="fstat-no" title="function not covered">function (file) {</span>
+  Revisioner.prototype.shouldSearchFile = <span class="fstat-no" title="function not covered" >function (file) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
+<span class="cstat-no" title="statement not covered" >    var filename = this.Tool.get_relative_path(file.base, file.revPathOriginal);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontGlobal.length; i--;) {</span>
-<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
-<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
-<span class="cstat-no" title="statement not covered">        return false;</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = this.options.dontGlobal.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered" >      var regex = (this.options.dontGlobal[i] instanceof RegExp) ? this.options.dontGlobal[i] : new RegExp(this.options.dontGlobal[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered" >      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
       }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered">    for (var i = this.options.dontSearchFile.length; i--;) {</span>
-<span class="cstat-no" title="statement not covered">      var regex = (this.options.dontSearchFile[i] instanceof RegExp) ? this.options.dontSearchFile[i] : new RegExp(this.options.dontSearchFile[i] + '$', 'ig');</span>
-<span class="cstat-no" title="statement not covered">      if (filename.match(regex)) {</span>
-<span class="cstat-no" title="statement not covered">        return false;</span>
+<span class="cstat-no" title="statement not covered" >    for (var i = this.options.dontSearchFile.length; i--;) {</span>
+<span class="cstat-no" title="statement not covered" >      var regex = (this.options.dontSearchFile[i] instanceof RegExp) ? this.options.dontSearchFile[i] : new RegExp(this.options.dontSearchFile[i] + '$', 'ig');</span>
+<span class="cstat-no" title="statement not covered" >      if (filename.match(regex)) {</span>
+<span class="cstat-no" title="statement not covered" >        return false;</span>
       }
     }
-<span class="cstat-no" title="statement not covered">    return true;</span>
+<span class="cstat-no" title="statement not covered" >    return true;</span>
 &nbsp;
   };
 &nbsp;
@@ -1674,11 +1676,10 @@ var Revisioner = (function () {
 module.exports = Revisioner;
 &nbsp;
 &nbsp;</pre></td></tr>
-</tbody></table></pre>
+</table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 20:09:07 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Wed Apr 19 2017 03:55:47 GMT+0000 (UTC)</div>
 </div>
-
-
-</body></html>
+</body>
+</html>
