@@ -1,6 +1,6 @@
 # npmtest-gulp-rev-all
 
-#### test coverage for  [gulp-rev-all (v0.9.7)](https://github.com/smysnk/gulp-rev-all)  [![npm package](https://img.shields.io/npm/v/npmtest-gulp-rev-all.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-gulp-rev-all) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-gulp-rev-all.svg)](https://travis-ci.org/npmtest/node-npmtest-gulp-rev-all)
+#### basic test coverage for  [gulp-rev-all (v0.9.7)](https://github.com/smysnk/gulp-rev-all)  [![npm package](https://img.shields.io/npm/v/npmtest-gulp-rev-all.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-gulp-rev-all) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-gulp-rev-all.svg)](https://travis-ci.org/npmtest/node-npmtest-gulp-rev-all)
 
 #### Static asset revisioning by appending content hash to filenames: unicorn.css => unicorn.098f6bcd.css, also re-writes references in each file to new reved name.
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-gulp-rev-all/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-gulp-rev-all/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-gulp-rev-all/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-gulp-rev-all/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-gulp-rev-all/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-gulp-rev-all/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-gulp-rev-all/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-gulp-rev-all/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-gulp-rev-all/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-gulp-rev-all/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-gulp-rev-all/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-gulp-rev-all/build/coverage.html/index.html)
 
@@ -103,7 +103,8 @@
     "scripts": {
         "test": "mocha test.js"
     },
-    "version": "0.9.7"
+    "version": "0.9.7",
+    "bin": {}
 }
 ```
 
